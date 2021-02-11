@@ -4,6 +4,7 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 import { signup } from "../CallingApi/patientapi";
 import Navbar from "../Landing Page/Navbar";
+import Footer from "../Landing Page/Footer";
 
 const RegisterDoctor = (props) => {
   console.log(props);
@@ -182,6 +183,7 @@ const RegisterDoctor = (props) => {
           </Link>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

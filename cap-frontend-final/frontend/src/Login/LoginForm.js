@@ -5,6 +5,7 @@ import { signin, authenticate, isAutheticated } from "../CallingApi/patientapi";
 import { signout } from "../CallingApi/patientapi";
 import Navbar from "../Landing Page/Navbar";
 import { Button } from "../Landing Page/Button";
+import Footer from "../Landing Page/Footer";
 function LoginForm(props) {
   const [values, setValues] = useState({
     email: "",
@@ -55,14 +56,14 @@ function LoginForm(props) {
     <div>
       <Navbar />
       <div className="wrapper">
-        <div className="title">
+        <div className="back">
           <Link to="/">
             {" "}
             <div className="inputfield">
-              <p>Back</p>
+              <p>Back to Home</p>
             </div>{" "}
           </Link>
-          <div>Login here</div>
+          <div className="title">Login here</div>
         </div>
         <div className="form">
           <div className="inputfield">
@@ -106,6 +107,7 @@ function LoginForm(props) {
           {performRedirects()}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
 import Navbar from "../Landing Page/Navbar";
+import Footer from "../Landing Page/Footer";
 
 export default function RegisterSelect() {
   return (
@@ -38,6 +39,7 @@ export default function RegisterSelect() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

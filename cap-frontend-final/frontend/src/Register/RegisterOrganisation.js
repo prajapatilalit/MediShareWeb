@@ -4,6 +4,7 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 import { signup } from "../CallingApi/patientapi";
 import Navbar from "../Landing Page/Navbar";
+import Footer from "../Landing Page/Footer";
 
 function RegisterOrganisation(props) {
   const [values, setValues] = useState({
@@ -177,6 +178,7 @@ function RegisterOrganisation(props) {
           </Link>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
