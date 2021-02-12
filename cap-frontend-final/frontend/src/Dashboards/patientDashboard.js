@@ -16,14 +16,13 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 const PatientDashboard = ({ props, history }) => {
   const [name, setName] = useState("");
-  const [selectedDate, setSelectedDate] = useState(new Date());
+
   useEffect(() => {
     const Name = JSON.parse(localStorage.getItem("jwt"));
     setName(Name.user.patient_name);
   }, []);
 
   const [values, SetValues] = useState({
-    dob: "",
     age: "",
     gender: "",
     bloodgroup: "",
@@ -39,7 +38,6 @@ const PatientDashboard = ({ props, history }) => {
   });
 
   const {
-    dob,
     age,
     gender,
     bloodgroup,
@@ -54,7 +52,6 @@ const PatientDashboard = ({ props, history }) => {
   } = values;
 
   const [edit, setEdits] = useState({
-    e_dob: "",
     e_age: "",
     e_gender: "",
     e_bloodgroup: "",
@@ -116,31 +113,44 @@ const PatientDashboard = ({ props, history }) => {
 
   console.log("PatientDashboard", t.user._id);
 
-  const [calculatedage, setCalculatedAge] = useState("");
-  const getAge = (e) => {
-    var PresentDay = new Date();
-    var dateOfBirth = e.get_selectedDate();
-    var months =
-      PresentDay.getMonth() -
-      dateOfBirth.getMonth() +
-      12 * (PresentDay.getFullYear() - dateOfBirth.getFullYear());
-    return (age = Math.round(months / 12));
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const calculateAge = (age1) => {
+    var presentDay = new Date();
+    var dateOfBirth = new Date(age1);
+    var age_now = presentDay.getFullYear() - dateOfBirth.getFullYear();
+    var months = presentDay.getMonth() - dateOfBirth.getMonth();
+    if (
+      months < 0 ||
+      (months === 0 && presentDay.getDate() < dateOfBirth.getDate())
+    ) {
+      age_now--;
+    }
+
+    return age_now;
   };
 
+  let a = calculateAge(selectedDate);
+  console.log(a);
+  const handleChange_age = (selectedDate) => {
+    setSelectedDate(selectedDate);
+  };
+  const e_handleChange_age = (selectedDate) => {
+    setSelectedDate(selectedDate);
+  };
   const handleChange = (e) => {
     const store = e.target.name;
-    SetValues({ ...values, [store]: e.target.value });
+    SetValues({ ...values, [store]: e.target.value, age: a });
   };
 
   const e_handleChange = (e) => {
     const store = e.target.name;
-    setEdits({ ...edit, [store]: e.target.value });
+    setEdits({ ...edit, [store]: e.target.value, e_age: a });
   };
   const Age = parseInt(age);
   const Emergency_no = parseInt(emergency_no);
   const onSubmit = (e) => {
     if (
-      !dob ||
       !age ||
       !gender ||
       !bloodgroup ||
@@ -154,7 +164,6 @@ const PatientDashboard = ({ props, history }) => {
     e.preventDefault();
     pat_dets({
       id: uid,
-      dob,
       age: Age,
       gender,
       bloodgroup,
@@ -189,6 +198,7 @@ const PatientDashboard = ({ props, history }) => {
       updatePatDetails(
         {
           id: e_id,
+
           age: parseInt(e_age),
           gender: e_gender,
           bloodgroup: e_bloodgroup,
@@ -220,40 +230,35 @@ const PatientDashboard = ({ props, history }) => {
           <DatePicker
             selected={selectedDate}
             required
-            name="DOB"
-            onChange={(handleChange) => setSelectedDate(handleChange)}
+            // onSelect={handleChange_age}
+            onChange={handleChange_age}
             dateFormat="dd/MM/yyyy"
             showYearDropdown
-            showMonthYearDropdown
+            showMonthDropdown
             className="input"
+            isClearable
           />
         </div>
         <div className="inputfield">
-          <label>Age</label>
+          <label>Age:</label>
           <input
-            required
-            type="text"
             name="age"
-            onChange={(handleChange) => setCalculatedAge(handleChange)}
-            value={getAge}
+            onChange={handleChange}
+            readOnly="true"
+            value={a}
             className="input"
           />
         </div>
         <div className="inputfield">
           <label>Gender</label>
-          <select
+          <input
             required
             type="text"
-            name="e_gender"
-            onChange={e_handleChange}
-            value={e_gender}
+            name="gender"
+            onChange={handleChange}
+            value={gender}
             className="input"
-            option
-          >
-            <option value="female">female</option>
-            <option value="male">male</option>
-            <option value="other">other</option>
-          </select>
+          />
         </div>
         <div className="inputfield">
           <label>Bloodgroup</label>
@@ -327,8 +332,7 @@ const PatientDashboard = ({ props, history }) => {
           <DatePicker
             selected={selectedDate}
             required
-            name="DOB"
-            onChange={(e_handleChange) => setSelectedDate(e_handleChange)}
+            onChange={e_handleChange_age}
             dateFormat="dd/MM/yyyy"
             showYearDropdown
             showMonthYearDropdown
@@ -336,31 +340,19 @@ const PatientDashboard = ({ props, history }) => {
           />
         </div>
         <div className="inputfield">
-          <label>Age</label>
-          <input
-            required
-            type="text"
-            name="e_age"
-            onChange={(e_handleChange) => setCalculatedAge(e_handleChange)}
-            value={e_age}
-            className="input"
-          />
+          <label>Age:</label>
+          <input onChange={e_handleChange} value={a} className="input" />
         </div>
         <div className="inputfield">
           <label>Gender</label>
-          <select
+          <input
             required
             type="text"
-            name="e_gender"
-            onChange={e_handleChange}
-            value={e_gender}
+            name="gender"
+            onChange={handleChange}
+            value={gender}
             className="input"
-            option
-          >
-            <option value="female">female</option>
-            <option value="male">male</option>
-            <option value="other">other</option>
-          </select>
+          />
         </div>
         <div className="inputfield">
           <label>Bloodgroup</label>
