@@ -83,9 +83,14 @@ const PatientDashboard = ({ props, history }) => {
       .then((res) => {
         console.log(res);
         if (res.message || res.length === 0) {
-          SetValues({ ...values, success: false, error: res.message });
+          SetValues({
+            ...values,
+            success: false,
+            error: res.message,
+            a: age,
+          });
         } else {
-          SetValues({ ...values, success: true });
+          SetValues({ ...values, success: true, a: age });
         }
         const e = { ...res[0] };
         console.log(e._id);
@@ -161,6 +166,7 @@ const PatientDashboard = ({ props, history }) => {
     ) {
       alert("Enter all details");
     }
+
     e.preventDefault();
     pat_dets({
       id: uid,
@@ -214,7 +220,11 @@ const PatientDashboard = ({ props, history }) => {
           if (data.msg) {
             SetValues({ ...values, error: data.msg, message: "" });
           } else {
-            SetValues({ ...values, error: "", message: data.message });
+            SetValues({
+              ...values,
+              error: "",
+              message: data.message,
+            });
           }
         })
         .catch((err) => console.log(err.message));
@@ -230,7 +240,6 @@ const PatientDashboard = ({ props, history }) => {
           <DatePicker
             selected={selectedDate}
             required
-            // onSelect={handleChange_age}
             onChange={handleChange_age}
             dateFormat="dd/MM/yyyy"
             showYearDropdown
@@ -335,13 +344,19 @@ const PatientDashboard = ({ props, history }) => {
             onChange={e_handleChange_age}
             dateFormat="dd/MM/yyyy"
             showYearDropdown
-            showMonthYearDropdown
+            showMonthDropdown
             className="input"
           />
         </div>
         <div className="inputfield">
           <label>Age:</label>
-          <input onChange={e_handleChange} value={a} className="input" />
+          <input
+            name="e_age"
+            onChange={e_handleChange}
+            readOnly="true"
+            value={a}
+            className="input"
+          />
         </div>
         <div className="inputfield">
           <label>Gender</label>
@@ -416,7 +431,12 @@ const PatientDashboard = ({ props, history }) => {
           <button
             className="btn"
             onClick={() => {
-              SetValues({ ...values, editDetails: false, message: "" });
+              SetValues({
+                ...values,
+                editDetails: false,
+                message: "",
+                e_age: a,
+              });
               setEdits({
                 e_age: "",
                 e_gender: "",
@@ -514,7 +534,7 @@ const PatientDashboard = ({ props, history }) => {
           <div className="form">
             <div className="inputfield">
               <p>
-                Age : <b>{e_age}</b>
+                Age : <b>{a}</b>
               </p>
             </div>
             <div className="inputfield">
@@ -567,18 +587,19 @@ const PatientDashboard = ({ props, history }) => {
         ""
       )}
 
-      {/*success && !editDetails ? (
+      {success && !editDetails ? (
         <>
           <button
             onClick={() => {
-              SetValues({ ...values, editDetails: true })
-            }}>
+              SetValues({ ...values, editDetails: true });
+            }}
+          >
             Edit your details
-          </button>{' '}
+          </button>{" "}
         </>
       ) : (
-        ''
-      )*/}
+        ""
+      )}
 
       {!success ? (
         <Link to="/patient/dashboard" className="link">
@@ -588,18 +609,19 @@ const PatientDashboard = ({ props, history }) => {
         ""
       )}
       {editDetails ? editForm() : <p></p>}
-      {/*editDetails ? (
+      {/* {editDetails ? (
         <button
           onClick={() => {
-            SetValues({ ...values, editDetails: false })
-          }}>
+            SetValues({ ...values, editDetails: false });
+          }}
+        >
           Edit Later
         </button>
       ) : (
-        ''
+        ""
       )}
       {JSON.stringify(values)}
-      {JSON.stringify(edit)*/}
+      {JSON.stringify(edit)} */}
     </div>
   );
 };
