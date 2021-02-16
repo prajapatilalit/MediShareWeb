@@ -269,6 +269,7 @@ const PatientDashboard = ({ props, history }) => {
                 type="radio"
                 value="M"
                 onChange={handleChange}
+                checked={values.gender === "M"}
               />
               Male
             </label>
@@ -279,6 +280,7 @@ const PatientDashboard = ({ props, history }) => {
                 type="radio"
                 value="F"
                 onChange={handleChange}
+                checked={values.gender === "F"}
               />
               Female
             </label>
@@ -288,6 +290,7 @@ const PatientDashboard = ({ props, history }) => {
                 type="radio"
                 value="O"
                 onChange={handleChange}
+                checked={values.gender === "O"}
               />
               Other
             </label>
@@ -392,6 +395,7 @@ const PatientDashboard = ({ props, history }) => {
                 type="radio"
                 value="M"
                 onChange={e_handleChange}
+                checked={edit.e_gender === "M"}
               />
               Male
             </label>
@@ -401,6 +405,7 @@ const PatientDashboard = ({ props, history }) => {
                 type="radio"
                 value="F"
                 onChange={e_handleChange}
+                checked={edit.e_gender === "F"}
               />
               Female
             </label>
@@ -410,6 +415,7 @@ const PatientDashboard = ({ props, history }) => {
                 type="radio"
                 value="O"
                 onChange={e_handleChange}
+                checked={edit.e_gender === "O"}
               />
               Other
             </label>
