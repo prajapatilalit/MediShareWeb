@@ -10,6 +10,16 @@ body {
   background: #1c2237;
   padding: 0 10px;
 }
+.message {
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: capitalize;
+  font-weight: 700;
+  background-image: linear-gradient(to top, green, darkgreen);
+  padding: 10px;
+  margin: 10px 0px;
+  border-radius: 2px;
+  color: #fff;
+}
 .wrapper {
   max-width: 600px;
   width: 100%;
@@ -166,6 +176,14 @@ body {
 
 .wrapper .form .inputfield:last-child {
   margin-bottom: 0;
+}
+
+.gender-container {
+  font-weight: bold;
+}
+
+.gender-container input {
+  margin-left: 5px;
 }
 
 @media (max-width: 420px) {

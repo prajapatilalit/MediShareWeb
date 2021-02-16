@@ -45,7 +45,7 @@ const PatientDashboard = ({ props, history }) => {
     occur_cond,
     medication,
     emergency_no,
-    error,
+    // error,
     message,
     success,
     editDetails,
@@ -152,6 +152,7 @@ const PatientDashboard = ({ props, history }) => {
     const store = e.target.name;
     setEdits({ ...edit, [store]: e.target.value, e_age: a });
   };
+
   const Age = parseInt(age);
   const Emergency_no = parseInt(emergency_no);
   const onSubmit = (e) => {
@@ -180,9 +181,9 @@ const PatientDashboard = ({ props, history }) => {
     })
       .then((data) => {
         if (data.msg) {
-          SetValues({ ...values, error: data.msg, message: "" });
+          SetValues({ ...values, error: data.msg, message: "", age: a });
         } else {
-          SetValues({ ...values, error: "", message: data.message });
+          SetValues({ ...values, error: "", message: data.message, age: a });
         }
       })
       .catch((err) => console.log(err.message));
@@ -218,12 +219,13 @@ const PatientDashboard = ({ props, history }) => {
         .then((data) => {
           console.log(data);
           if (data.msg) {
-            SetValues({ ...values, error: data.msg, message: "" });
+            SetValues({ ...values, error: data.msg, message: "", e_age: a });
           } else {
             SetValues({
               ...values,
               error: "",
               message: data.message,
+              e_age: a,
             });
           }
         })
@@ -260,15 +262,38 @@ const PatientDashboard = ({ props, history }) => {
         </div>
         <div className="inputfield">
           <label>Gender</label>
-          <input
-            required
-            type="text"
-            name="gender"
-            onChange={handleChange}
-            value={gender}
-            className="input"
-          />
+          <div className="gender-container">
+            <label>
+              <input
+                name="gender"
+                type="radio"
+                value="M"
+                onChange={handleChange}
+              />
+              Male
+            </label>
+
+            <label>
+              <input
+                name="gender"
+                type="radio"
+                value="F"
+                onChange={handleChange}
+              />
+              Female
+            </label>
+            <label>
+              <input
+                name="gender"
+                type="radio"
+                value="O"
+                onChange={handleChange}
+              />
+              Other
+            </label>
+          </div>
         </div>
+
         <div className="inputfield">
           <label>Bloodgroup</label>
           <input
@@ -321,14 +346,13 @@ const PatientDashboard = ({ props, history }) => {
             value={emergency_no}
           />
         </div>
+        {message ? <p className="message">{message}</p> : ""}
         <div className="inputfield">
           <button onClick={onSubmit} className="btn">
             Submit
           </button>
         </div>
       </div>
-
-      {error ? <p>{error}</p> : <p>{message}</p>}
     </div>
   );
 
@@ -345,6 +369,7 @@ const PatientDashboard = ({ props, history }) => {
             dateFormat="dd/MM/yyyy"
             showYearDropdown
             showMonthDropdown
+            isClearable
             className="input"
           />
         </div>
@@ -360,14 +385,35 @@ const PatientDashboard = ({ props, history }) => {
         </div>
         <div className="inputfield">
           <label>Gender</label>
-          <input
-            required
-            type="text"
-            name="gender"
-            onChange={handleChange}
-            value={gender}
-            className="input"
-          />
+          <div className="gender-container">
+            <label>
+              <input
+                name="e_gender"
+                type="radio"
+                value="M"
+                onChange={e_handleChange}
+              />
+              Male
+            </label>
+            <label>
+              <input
+                name="e_gender"
+                type="radio"
+                value="F"
+                onChange={e_handleChange}
+              />
+              Female
+            </label>
+            <label>
+              <input
+                name="e_gender"
+                type="radio"
+                value="O"
+                onChange={e_handleChange}
+              />
+              Other
+            </label>
+          </div>
         </div>
         <div className="inputfield">
           <label>Bloodgroup</label>
@@ -421,12 +467,13 @@ const PatientDashboard = ({ props, history }) => {
             value={e_emergency_no}
           />
         </div>
+        {message ? <p className="message">{message}</p> : ""}
         <div className="inputfield">
           <button onClick={e_onSubmit} className="btn">
             Submit
           </button>
         </div>
-        {message ? <p>{message}</p> : ""}
+
         <Link className="inputfield">
           <button
             className="btn"

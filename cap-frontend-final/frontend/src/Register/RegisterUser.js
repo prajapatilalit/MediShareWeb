@@ -52,9 +52,9 @@ const RegisterUser = (props) => {
     )
       .then((data) => {
         if (data.msg) {
-          SetValues([{ ...values, error: data.msg, message: "" }]);
+          SetValues({ ...values, error: data.msg, message: "" });
         } else {
-          SetValues([{ ...values, error: "", message: data.message }]);
+          SetValues({ ...values, error: "", message: data.message });
         }
       })
       .catch((err) => console.log(err.message));
