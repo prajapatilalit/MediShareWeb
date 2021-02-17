@@ -45,7 +45,7 @@ const PatientDashboard = ({ props, history }) => {
     occur_cond,
     medication,
     emergency_no,
-    // error,
+    error,
     message,
     success,
     editDetails,
@@ -145,14 +145,14 @@ const PatientDashboard = ({ props, history }) => {
   };
   const handleChange = (e) => {
     const store = e.target.name;
-    SetValues({ ...values, [store]: e.target.value, age: a });
+    SetValues({ ...values, [store]: e.target.value, Age: a });
   };
 
+  console.log(Age, a);
   const e_handleChange = (e) => {
     const store = e.target.name;
     setEdits({ ...edit, [store]: e.target.value, e_age: a });
   };
-
   const Age = parseInt(age);
   const Emergency_no = parseInt(emergency_no);
   const onSubmit = (e) => {
@@ -181,9 +181,9 @@ const PatientDashboard = ({ props, history }) => {
     })
       .then((data) => {
         if (data.msg) {
-          SetValues({ ...values, error: data.msg, message: "", age: a });
+          SetValues({ ...values, error: data.msg, message: "" });
         } else {
-          SetValues({ ...values, error: "", message: data.message, age: a });
+          SetValues({ ...values, error: "", message: data.message });
         }
       })
       .catch((err) => console.log(err.message));
@@ -219,13 +219,12 @@ const PatientDashboard = ({ props, history }) => {
         .then((data) => {
           console.log(data);
           if (data.msg) {
-            SetValues({ ...values, error: data.msg, message: "", e_age: a });
+            SetValues({ ...values, error: data.msg, message: "" });
           } else {
             SetValues({
               ...values,
               error: "",
               message: data.message,
-              e_age: a,
             });
           }
         })
@@ -248,6 +247,7 @@ const PatientDashboard = ({ props, history }) => {
             showMonthDropdown
             className="input"
             isClearable
+            value={age}
           />
         </div>
         <div className="inputfield">
@@ -296,7 +296,6 @@ const PatientDashboard = ({ props, history }) => {
             </label>
           </div>
         </div>
-
         <div className="inputfield">
           <label>Bloodgroup</label>
           <input
@@ -349,7 +348,12 @@ const PatientDashboard = ({ props, history }) => {
             value={emergency_no}
           />
         </div>
-        {message ? <p className="message">{message}</p> : ""}
+
+        {error ? (
+          <p className="error_message">{error}</p>
+        ) : (
+          <p className="message">{message}</p>
+        )}
         <div className="inputfield">
           <button onClick={onSubmit} className="btn">
             Submit
@@ -372,8 +376,8 @@ const PatientDashboard = ({ props, history }) => {
             dateFormat="dd/MM/yyyy"
             showYearDropdown
             showMonthDropdown
-            isClearable
             className="input"
+            value={e_age}
           />
         </div>
         <div className="inputfield">

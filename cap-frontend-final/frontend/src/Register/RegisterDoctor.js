@@ -167,14 +167,14 @@ const RegisterDoctor = (props) => {
               onChange={onChange}
             />
           </div>
+          {error ? <p className="error_message">{error}</p> : ""}
+          {message ? <p className="message">{message}</p> : ""}
           <div className="inputfield">
             <button onClick={onSubmit} className="btn">
               Submit
             </button>
           </div>
 
-          {error ? <p>{error}</p> : ""}
-          {message ? <p>{message}</p> : ""}
           <Link to="/users/login">
             {" "}
             <div className="inputfield">
