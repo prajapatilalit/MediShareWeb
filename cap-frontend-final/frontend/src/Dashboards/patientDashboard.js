@@ -51,6 +51,7 @@ const PatientDashboard = ({ props, history }) => {
     editDetails,
   } = values;
 
+  // console.log(age);
   const [edit, setEdits] = useState({
     e_age: "",
     e_gender: "",
@@ -60,7 +61,6 @@ const PatientDashboard = ({ props, history }) => {
     e_medication: "",
     e_emergency_no: "",
   });
-
   const {
     e_id,
     e_age,
@@ -71,6 +71,8 @@ const PatientDashboard = ({ props, history }) => {
     e_medication,
     e_emergency_no,
   } = edit;
+
+  // console.log(e_age);
 
   //  SetValues({...values,age : res[0].age,gender : res[0].gender , bloodgroup : res[0].bloodgroup,allergies : res[0].allergies,
   // occur_cond : res[0].occur_cond , medication : res[0].medication , emergency_no : res[0].emergency_no
@@ -93,7 +95,7 @@ const PatientDashboard = ({ props, history }) => {
           SetValues({ ...values, success: true, a: age });
         }
         const e = { ...res[0] };
-        // console.log(e._id);
+        // console.log(e.age);
         setEdits({
           e_id: e._id,
           e_age: e.age,
@@ -106,7 +108,6 @@ const PatientDashboard = ({ props, history }) => {
         });
         // console.log(res);
       })
-
       .catch((err) => {
         // console.log(err);
       });
@@ -145,7 +146,7 @@ const PatientDashboard = ({ props, history }) => {
   };
   const handleChange = (e) => {
     const store = e.target.name;
-    SetValues({ ...values, [store]: e.target.value, Age: a });
+    SetValues({ ...values, [store]: e.target.value });
   };
 
   const e_handleChange = (e) => {
@@ -153,7 +154,7 @@ const PatientDashboard = ({ props, history }) => {
     setEdits({ ...edit, [store]: e.target.value, e_age: a });
   };
   const Age = parseInt(a);
-  console.log(Age);
+  // console.log(Age);
   const Emergency_no = parseInt(emergency_no);
   const onSubmit = (e) => {
     if (
@@ -171,7 +172,7 @@ const PatientDashboard = ({ props, history }) => {
     e.preventDefault();
     pat_dets({
       id: uid,
-      age: Age,
+      age: a,
       gender,
       bloodgroup,
       allergies,
@@ -205,8 +206,7 @@ const PatientDashboard = ({ props, history }) => {
       updatePatDetails(
         {
           id: e_id,
-
-          age: parseInt(e_age),
+          age: Age,
           gender: e_gender,
           bloodgroup: e_bloodgroup,
           allergies: e_allergies,
@@ -217,7 +217,7 @@ const PatientDashboard = ({ props, history }) => {
         e_id
       )
         .then((data) => {
-          // console.log(data);
+          console.log(Age);
           if (data.msg) {
             SetValues({ ...values, error: data.msg, message: "" });
           } else {
@@ -247,16 +247,16 @@ const PatientDashboard = ({ props, history }) => {
             showMonthDropdown
             className="input"
             isClearable
-            value={Age}
           />
         </div>
         <div className="inputfield">
           <label>Age:</label>
           <input
             name="age"
+            type="text"
             onChange={handleChange}
             readOnly="true"
-            value={a}
+            value={Age}
             className="input"
           />
         </div>
@@ -591,7 +591,7 @@ const PatientDashboard = ({ props, history }) => {
           <div className="form">
             <div className="inputfield">
               <p>
-                Age : <b>{a}</b>
+                Age : <b>{e_age}</b>
               </p>
             </div>
             <div className="inputfield">
