@@ -81,7 +81,7 @@ const PatientDashboard = ({ props, history }) => {
   useEffect(() => {
     getPatDetails(uid)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.message || res.length === 0) {
           SetValues({
             ...values,
@@ -93,7 +93,7 @@ const PatientDashboard = ({ props, history }) => {
           SetValues({ ...values, success: true, a: age });
         }
         const e = { ...res[0] };
-        console.log(e._id);
+        // console.log(e._id);
         setEdits({
           e_id: e._id,
           e_age: e.age,
@@ -104,11 +104,11 @@ const PatientDashboard = ({ props, history }) => {
           e_medication: e.medication,
           e_emergency_no: e.emergency_no,
         });
-        console.log(res);
+        // console.log(res);
       })
 
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   }, [message, editDetails]);
 
@@ -116,7 +116,7 @@ const PatientDashboard = ({ props, history }) => {
   //   const patient_email = email
   //   const patient_phone_no = phone_no
 
-  console.log("PatientDashboard", t.user._id);
+  // console.log("PatientDashboard", t.user._id);
 
   const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -136,7 +136,7 @@ const PatientDashboard = ({ props, history }) => {
   };
 
   let a = calculateAge(selectedDate);
-  console.log(a);
+  // console.log(a);
   const handleChange_age = (selectedDate) => {
     setSelectedDate(selectedDate);
   };
@@ -148,12 +148,12 @@ const PatientDashboard = ({ props, history }) => {
     SetValues({ ...values, [store]: e.target.value, Age: a });
   };
 
-  console.log(Age, a);
   const e_handleChange = (e) => {
     const store = e.target.name;
     setEdits({ ...edit, [store]: e.target.value, e_age: a });
   };
-  const Age = parseInt(age);
+  const Age = parseInt(a);
+  console.log(Age);
   const Emergency_no = parseInt(emergency_no);
   const onSubmit = (e) => {
     if (
@@ -217,7 +217,7 @@ const PatientDashboard = ({ props, history }) => {
         e_id
       )
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           if (data.msg) {
             SetValues({ ...values, error: data.msg, message: "" });
           } else {
@@ -247,7 +247,7 @@ const PatientDashboard = ({ props, history }) => {
             showMonthDropdown
             className="input"
             isClearable
-            value={age}
+            value={Age}
           />
         </div>
         <div className="inputfield">
