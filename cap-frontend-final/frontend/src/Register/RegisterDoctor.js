@@ -152,12 +152,15 @@ const RegisterDoctor = (props) => {
           </div>
           <div className="inputfield">
             <label>Type of Work</label>
-            <input
+            <select
               name="type_work"
-              className="input"
               value={type_work}
               onChange={onChange}
-            />
+              className="input"
+            >
+              <option value="clinic">Clinic</option>
+              <option value="hospital">Hospital</option>
+            </select>
           </div>
           <div className="inputfield">
             <label>Address</label>
