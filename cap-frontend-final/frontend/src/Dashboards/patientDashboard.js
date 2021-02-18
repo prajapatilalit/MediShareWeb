@@ -72,8 +72,6 @@ const PatientDashboard = ({ props, history }) => {
     e_emergency_no,
   } = edit;
 
-  // console.log(e_age);
-
   //  SetValues({...values,age : res[0].age,gender : res[0].gender , bloodgroup : res[0].bloodgroup,allergies : res[0].allergies,
   // occur_cond : res[0].occur_cond , medication : res[0].medication , emergency_no : res[0].emergency_no
   // })
@@ -624,19 +622,39 @@ const PatientDashboard = ({ props, history }) => {
                 Emergency Number : <b>{e_emergency_no}</b>
               </p>
             </div>
-            {success && !editDetails ? (
-              <div className="inputfield">
-                <button
-                  className="btn"
-                  onClick={() => {
-                    SetValues({ ...values, editDetails: true });
-                  }}
-                >
-                  Edit your details
-                </button>{" "}
+            {success && !editDetails && (
+              <div>
+                <div className="inputfield">
+                  <button
+                    className="btn"
+                    onClick={() => {
+                      SetValues({ ...values, editDetails: true });
+                    }}
+                  >
+                    Edit your details
+                  </button>{" "}
+                </div>
+                <div className="inputfield">
+                  <button
+                    className="btn"
+                    onClick={() => {
+                      history.push("/patient/dashboard/prescription", uid);
+                    }}
+                  >
+                    Prescription
+                  </button>
+                </div>
+                <div className="inputfield">
+                  <button
+                    className="btn"
+                    onClick={() => {
+                      history.push("/patient/dashboard/graph");
+                    }}
+                  >
+                    Graph
+                  </button>
+                </div>
               </div>
-            ) : (
-              ""
             )}
           </div>
         </div>
@@ -644,7 +662,7 @@ const PatientDashboard = ({ props, history }) => {
         ""
       )}
 
-      {success && !editDetails ? (
+      {/* {success && !editDetails ? (
         <>
           <button
             onClick={() => {
@@ -656,7 +674,7 @@ const PatientDashboard = ({ props, history }) => {
         </>
       ) : (
         ""
-      )}
+      )} */}
 
       {!success ? (
         <Link to="/patient/dashboard" className="link">

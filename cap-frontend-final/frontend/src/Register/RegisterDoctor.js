@@ -39,7 +39,8 @@ const RegisterDoctor = (props) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
     signup(
       {
         doctor_name: Name,
