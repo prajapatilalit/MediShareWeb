@@ -7,7 +7,7 @@ import Navbar from "../Landing Page/Navbar";
 import Footer from "../Landing Page/Footer";
 
 const RegisterDoctor = (props) => {
-  console.log(props);
+  // console.log(props);
   const [values, setValues] = useState({
     Name: "",
     Email: "",
@@ -65,7 +65,7 @@ const RegisterDoctor = (props) => {
       .catch((err) => console.log(err.message));
   };
 
-  console.log(props);
+  //
   return (
     <div>
       <Navbar />

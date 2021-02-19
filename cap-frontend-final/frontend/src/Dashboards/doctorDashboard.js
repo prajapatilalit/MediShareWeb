@@ -45,7 +45,7 @@ function DoctorDashboard({ history }) {
     if (pat_Index[0]) {
       setP_dets(pat_Index[0]);
       if (pat_Index[0].userinfo !== "" + undefined) {
-        // setDisplayDetails(true)
+        // setDisplayDetails(true);
         history.push("/doctor/AddingFeatures", pat_Index[0]);
       }
     } else {

@@ -52,15 +52,19 @@ function RegisterOrganisation(props) {
       .then((data) => {
         if (data.msg) {
           setValues({ ...values, error: data.msg, message: "" });
+          alert(error);
         } else {
           setValues({ ...values, error: "", message: data.message });
+          alert(message);
         }
       })
       .catch((err) => console.log(err.message));
   };
+
   const onchange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+
   return (
     <div>
       <Navbar />
@@ -88,7 +92,6 @@ function RegisterOrganisation(props) {
             />
           </div>
           <div className="inputfield">
-            789
             <label>Organization Email</label>
             <input
               name="email"

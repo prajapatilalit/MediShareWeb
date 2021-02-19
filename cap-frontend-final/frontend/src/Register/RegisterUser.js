@@ -131,7 +131,7 @@ const RegisterUser = (props) => {
               value={phone_no}
             />
           </div>
-          {error ? <p className="message">{error}</p> : ""}
+          {error ? <p className="error_message">{error}</p> : ""}
           {message ? <p className="message">{message}</p> : ""}
           <div className="inputfield">
             <button onClick={onSubmit} className="btn">

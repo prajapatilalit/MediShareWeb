@@ -7,9 +7,10 @@
   font-family: "Montserrat", sans-serif;
 }
 body {
-  background: #1c2237;
+  background: hsl(227, 33%, 16%);
   padding: 0 10px;
 }
+
 .wrapper {
   max-width: 500px;
   width: 100%;
