@@ -33,7 +33,6 @@ export default function RegisterSelect() {
         <div className="form">
           <div className="inputfield">
             <Link to="/users/register/patient" className="btn">
-              {/* <span>{<SaveIcon />}</span> */}
               <Button startIcon={<PersonIcon />} className="btn">
                 User
               </Button>

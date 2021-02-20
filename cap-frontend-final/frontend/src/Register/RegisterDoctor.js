@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { signup } from "../CallingApi/patientapi";
 import Navbar from "../Landing Page/Navbar";
 import Footer from "../Landing Page/Footer";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const RegisterDoctor = (props) => {
   // console.log(props);
@@ -73,7 +74,8 @@ const RegisterDoctor = (props) => {
         <div className="back">
           <Link to="/Register">
             {" "}
-            <div className="inputfield">
+            <div className="inputfield back-button">
+              <p>{<ArrowBackIcon />}</p>
               <p>Back to Register Dashboard</p>
             </div>{" "}
           </Link>
