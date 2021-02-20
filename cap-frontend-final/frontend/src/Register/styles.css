@@ -31,6 +31,11 @@ body {
   border-radius: 2px;
   color: #fff;
 }
+
+.back-button p {
+  display: inline-block;
+  align-items: center;
+}
 .wrapper {
   max-width: 500px;
   width: 100%;
@@ -47,6 +52,9 @@ body {
   color: #1c2237;
   text-transform: uppercase;
   text-align: center;
+}
+.title div {
+  margin-left: 5px;
 }
 
 .wrapper .form {
@@ -171,9 +179,10 @@ body {
 .wrapper .form .inputfield .btn {
   width: 100%;
   padding: 8px 10px;
-  font-size: 15px;
+  font-size: 25px;
   border: 0px;
   background: #1c2237;
+  text-decoration: none;
   color: #fff;
   cursor: pointer;
   border-radius: 3px;
