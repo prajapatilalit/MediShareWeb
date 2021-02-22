@@ -226,7 +226,7 @@ function DoctorDashboard({ history }) {
       {displayDetails ? (
         <>
           {p_dets.userinfo.patient_name
-            ? ""
+            ? setDisplayDetails(displayDetails(true))
             : alert("patient Details not found")}
           <div className="wrapper">
             <div className="title">Patient Basic Details : </div>
@@ -273,10 +273,10 @@ function DoctorDashboard({ history }) {
                   Emergency Number : <b>{p_dets.emergency_no}</b>
                 </p>
               </div>
-              <span>
+              <div>
                 <input type="file" onChange={onFileChange} />
                 <button onClick={onFileUpload}>Upload Report </button>
-              </span>
+              </div>
             </div>
           </div>
         </>

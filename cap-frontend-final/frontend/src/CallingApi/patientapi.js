@@ -159,3 +159,29 @@ export const getPres = (id) => {
     })
     .catch((err) => console.log(err));
 };
+
+export const addGraphValues = (data) => {
+  console.log(data);
+  return fetch("http://localhost:8000/catalog/doctor/create/graph", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((res) => res.json())
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+export const getPatGraph = (id) => {
+  return fetch(`http://localhost:8000/catalog/patient/${id}/graphvalues`, {
+    method: "GET",
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};

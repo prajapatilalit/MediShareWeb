@@ -78,6 +78,7 @@ const PatientDashboard = ({ props, history }) => {
   let t = {};
   t = JSON.parse(localStorage.getItem("jwt"));
   let uid = t.user._id;
+  let UID = t.user.UID;
   useEffect(() => {
     getPatDetails(uid)
       .then((res) => {
@@ -93,7 +94,7 @@ const PatientDashboard = ({ props, history }) => {
           SetValues({ ...values, success: true, a: age });
         }
         const e = { ...res[0] };
-        // console.log(e.age);
+        console.log(e._id);
         setEdits({
           e_id: e._id,
           e_age: e.age,
@@ -104,10 +105,10 @@ const PatientDashboard = ({ props, history }) => {
           e_medication: e.medication,
           e_emergency_no: e.emergency_no,
         });
-        // console.log(res);
+        console.log(res);
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
       });
   }, [message, editDetails]);
 
@@ -115,7 +116,7 @@ const PatientDashboard = ({ props, history }) => {
   //   const patient_email = email
   //   const patient_phone_no = phone_no
 
-  // console.log("PatientDashboard", t.user._id);
+  console.log("PatientDashboard", t.user._id);
 
   const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -215,7 +216,7 @@ const PatientDashboard = ({ props, history }) => {
         e_id
       )
         .then((data) => {
-          console.log(Age);
+          console.log(data);
           if (data.msg) {
             SetValues({ ...values, error: data.msg, message: "" });
           } else {
@@ -638,7 +639,7 @@ const PatientDashboard = ({ props, history }) => {
                   <button
                     className="btn"
                     onClick={() => {
-                      history.push("/patient/dashboard/prescription", uid);
+                      history.push("/patient/dashboard/prescription", UID);
                     }}
                   >
                     Prescription
@@ -648,7 +649,7 @@ const PatientDashboard = ({ props, history }) => {
                   <button
                     className="btn"
                     onClick={() => {
-                      history.push("/patient/dashboard/graph");
+                      history.push("/patient/dashboard/graph", UID);
                     }}
                   >
                     Graph

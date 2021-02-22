@@ -4,7 +4,6 @@ import "./styles.css";
 import Navbar from "../Landing Page/Navbar";
 import Footer from "../Landing Page/Footer";
 import Button from "@material-ui/core/Button";
-import SaveIcon from "@material-ui/icons/Save";
 import PersonIcon from "@material-ui/icons/Person";
 import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
 import BusinessIcon from "@material-ui/icons/Business";

@@ -10,6 +10,13 @@ const patDets = new Schema({
         ref: 'patients'
     },
 
+    /*
+    patRept: {
+        type: ObjectId,
+        ref: 'uploads'
+    },
+    */
+
     age: {
         type: Number,
         required: true
@@ -44,6 +51,7 @@ const patDets = new Schema({
         type: Number,
         required: true
     }
+
 }, { timestamps: true });
 
 const patdts = new mongoose.model('patdets', patDets);

@@ -93,11 +93,8 @@ function LoginForm(props) {
               Submit
             </button>
           </div>
-          {error ? (
-            <div id="message">{error}</div>
-          ) : (
-            <div id="message">{success}</div>
-          )}
+          {error ? <div className="error_message">{error}</div> : ""}
+          {success ? <div className="message">{success}</div> : ""}
           <Link to="/register">
             {" "}
             <div className="inputfield">

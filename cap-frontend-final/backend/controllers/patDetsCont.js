@@ -61,7 +61,7 @@ module.exports = {
 
         const {age, gender, bloodgroup, allergies, occur_cond, medication, emergency_no} = req.body;
 
-            const newPatDets = new patdts({userinfo: req.body.id, age, gender, bloodgroup, allergies, occur_cond, medication, emergency_no})
+            const newPatDets = new patdts({userinfo: req.body.id, age, gender, bloodgroup, allergies, occur_cond, medication, emergency_no, patReport: req.body.id})
 
             //patdts.populate(newPatDets, {path: 'UID', select: 'UID'}).then()
             const savedpatDets = await newPatDets.save();
@@ -81,7 +81,7 @@ module.exports = {
     try
     {
 
-        const patdets = await patdts.find({}).populate('userinfo', 'UID patient_name patient_email').sort('-createdAt');
+        const patdets = await patdts.find({}).populate({path: 'userinfo', select: 'UID patient_name patient_email'}).sort('-createdAt');
 
         res.status(200).json({
                 status: 'success',
@@ -99,8 +99,8 @@ module.exports = {
     patDets: async(req, res) => {
         const id = req.params.id;
     
-        patdts.find({userinfo :id})
-        .populate('userinfo', 'UID patient_name patient_email')
+        patdts.find({userinfo: id})
+        .populate({path: 'userinfo', select: 'UID patient_name patient_email'})
         .then(data => {
             if (!data)
               res.status(404).send({ message: "Not found patient detials with id " + id });

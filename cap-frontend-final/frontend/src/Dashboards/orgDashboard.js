@@ -31,12 +31,14 @@ function OrgDashboard({ history }) {
     console.log(patDets.data);
 
     const pat_Index = patDets.data.filter((data, i) => {
+      console.log(data.userinfo.UID, values);
       if (values === "" + data.userinfo.UID) {
-        return i;
+        console.log("Found");
+        return data.userinfo;
       }
     });
 
-    console.log(pat_Index[0]);
+    console.log(pat_Index);
 
     if (pat_Index[0]) {
       setP_dets(pat_Index[0]);

@@ -15,6 +15,15 @@ import doctorDashboard from "./Dashboards/doctorDashboard";
 import OrgDashboard from "./Dashboards/orgDashboard";
 import PatientDashboard from "./Dashboards/patientDashboard";
 import RegisterSelect from "./Register/RegisterSelect";
+import DoctorUploadPanal from "./Dashboards/DoctorUploadPanal";
+import Prescription from "./Dashboards/Prescription";
+import Graph from "./Dashboards/Graph";
+import PatientPrescription from "./Dashboards/patientPrescription";
+import PatientGraph from "./Dashboards/PatientGraph";
+import OrgGraph from "./Dashboards/OrgGraph";
+import OrgAllDetails from "./Dashboards/OrgAllDetails";
+import OrgPrescription from "./Dashboards/OrgPrescription";
+import PreviousPrescriptions from "./Dashboards/previousPrescriptions";
 
 function App() {
   return (
@@ -24,6 +33,43 @@ function App() {
         <Route exact path="/register" component={RegisterSelect} />
         <Route exact path="/users/register/patient" component={RegisterUser} />
         <Route exact path="/users/register/doctor" component={RegisterDoctor} />
+        <Route
+          exact
+          path="/doctor/AddingFeatures"
+          component={DoctorUploadPanal}
+        ></Route>
+        <Route
+          exact
+          path="/doctor/AddingFeatures/prescription"
+          component={Prescription}
+        ></Route>
+        <Route
+          exact
+          path="/doctor/AddingFeatures/graph"
+          component={Graph}
+        ></Route>
+        <Route
+          exact
+          path="/patient/dashboard/prescription"
+          component={PatientPrescription}
+        ></Route>
+        <Route
+          exact
+          path="/patient/dashboard/graph"
+          component={PatientGraph}
+        ></Route>
+        <Route exact path="/org/dashboard/graph" component={OrgGraph}></Route>
+        <Route exact path="/org/allDetails" component={OrgAllDetails}></Route>
+        <Route
+          exact
+          path="/org/dashboard/prescription"
+          component={OrgPrescription}
+        ></Route>
+        <Route
+          exact
+          path="/doctor/previousPrescriptions"
+          component={PreviousPrescriptions}
+        ></Route>
         <Route
           exact
           path="/users/register/org"

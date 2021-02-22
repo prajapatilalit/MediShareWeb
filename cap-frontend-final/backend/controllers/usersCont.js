@@ -205,6 +205,7 @@ module.exports = {
           const { email, password } = req.body;
            
           const user = await Patient.findOne({patient_email: email}) || await Docs.findOne({doctor_email: email}) || await Orgs.findOne({org_email: email});
+          const patUser = await Patient.findOne({patient_email: email})
           if (!user)
             return res
               .status(400)
