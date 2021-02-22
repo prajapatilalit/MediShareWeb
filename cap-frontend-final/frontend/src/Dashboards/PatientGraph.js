@@ -12,7 +12,13 @@ function PatientGraph({ history }) {
   useEffect(() => {
     getPatGraph(UID)
       .then((res) => {
-        setGraphValues(res);
+        const lastData = res.data.pop();
+        const a = lastData.Blood_pressure;
+        const b = lastData.Blood_sugar;
+        const c = lastData.Cholesterol;
+        const d = lastData.Heart_rate;
+        const graphData = [a, b, c, d];
+        setGraphValues(graphData);
       })
       .catch((err) => {
         console.log(err);
@@ -26,8 +32,8 @@ function PatientGraph({ history }) {
         <button>Patient Dashboard</button>
         {""}
       </Link>
-      {JSON.stringify(graphValues)}
-      <Chart data={addGraphValues} />
+      {/* {JSON.stringify(graphValues)} */}
+      <Chart data={graphValues} />
     </div>
   );
 }

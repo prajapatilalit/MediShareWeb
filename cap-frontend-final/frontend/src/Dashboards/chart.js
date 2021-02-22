@@ -1,9 +1,10 @@
-import React from "react";
-import { Doughnut } from "react-chartjs-2";
+import React, { useState, useEffect } from "react";
+import { Bar } from "react-chartjs-2";
 
 const Chart = (data) => {
+  console.log(data);
   const labels = ["Heart_rate", "Blood_pressure", "Cholestrol", "Blood_sugar"];
-  const dataVal = [45, 23, 62, 56];
+  const dataVal = data.data;
   const Chartdata = {
     labels: labels,
     datasets: [
@@ -37,7 +38,8 @@ const Chart = (data) => {
           backgroundColor: "antiquewhite",
         }}
       >
-        <Doughnut
+        <Bar
+          data={Chartdata}
           options={{
             maintainAspectRatio: false,
             title: {
@@ -67,8 +69,7 @@ const Chart = (data) => {
               ],
             },
           }}
-          data={Chartdata}
-        ></Doughnut>
+        ></Bar>
       </div>
     </div>
   );

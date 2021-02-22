@@ -21,7 +21,6 @@ const PatientDashboard = ({ props, history }) => {
     const Name = JSON.parse(localStorage.getItem("jwt"));
     setName(Name.user.patient_name);
   }, []);
-
   const [values, SetValues] = useState({
     age: "",
     gender: "",

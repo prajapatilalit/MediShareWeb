@@ -13,13 +13,20 @@ function Graph({ history }) {
   useEffect(() => {
     getPatGraph(UID)
       .then((res) => {
-        console.log("GraphValues", setGraphValues(res));
+        const lastData = res.data.pop();
+        const a = lastData.Blood_pressure;
+        const b = lastData.Blood_sugar;
+        const c = lastData.Cholesterol;
+        const d = lastData.Heart_rate;
+        const graphData = [a, b, c, d];
+        setGraphValues(graphData);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
+  console.log(graphValues);
   const [values, setValues] = useState(
     {
       Heart_rate: "",
@@ -37,7 +44,8 @@ function Graph({ history }) {
   };
 
   const { Heart_rate, Blood_pressure, Cholesterol, Blood_sugar } = values;
-  const onClicks = () => {
+  const onClicks = (e) => {
+    e.preventDefault();
     addGraphValues({ UID, Doctor: doctorName, ...values })
       .then((res) => {
         setResult(res.message);
@@ -47,7 +55,7 @@ function Graph({ history }) {
         console.log(err);
       });
   };
-  console.log(values);
+
   return (
     <div>
       <h1>Add Graph here</h1>
@@ -98,9 +106,9 @@ function Graph({ history }) {
       {result ? <p style={{ color: "green" }}>{result}</p> : ""}
       {/* {JSON.stringify(resultValues)}
              {JSON.stringify(values)} */}
-      {JSON.stringify(graphValues)}
+      {/* {JSON.stringify(graphValues)} */}
 
-      <Chart data={getPatGraph} />
+      <Chart data={graphValues} />
     </div>
   );
 }
