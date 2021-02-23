@@ -196,6 +196,16 @@ body {
   margin-left: 5px;
 }
 
+.chart_box {
+  display: flex;
+  flex-direction: row;
+}
+
+.chart {
+  width: 500px;
+  height: 400px;
+}
+
 @media (max-width: 420px) {
   .wrapper .form .inputfield {
     flex-direction: column;
