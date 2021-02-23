@@ -197,13 +197,10 @@ body {
 }
 
 .chart_box {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: row;
-}
-
-.chart {
-  width: 500px;
-  height: 400px;
 }
 
 @media (max-width: 420px) {

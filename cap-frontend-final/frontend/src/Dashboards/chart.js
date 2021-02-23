@@ -10,6 +10,8 @@ const Chart = (props) => {
     datasets: [
       {
         label: props.name,
+        fill: false,
+
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -23,6 +25,7 @@ const Chart = (props) => {
           "rgba(75, 192, 192, 1)",
         ],
         borderWidth: 1,
+
         data: dataVal,
       },
     ],
@@ -35,12 +38,11 @@ const Chart = (props) => {
           width: "90%",
           height: "400px",
           display: "inline-flex",
-          backgroundColor: "antiquewhite",
+          backgroundColor: "white",
         }}
       >
         <Line
           data={Chartdata}
-          type="line"
           options={{
             maintainAspectRatio: false,
             title: {
@@ -48,6 +50,7 @@ const Chart = (props) => {
               text: "Patient health chart",
               fontSize: 25,
             },
+
             scales: {
               yAxes: [
                 {
@@ -55,8 +58,7 @@ const Chart = (props) => {
                     beginAtZero: true,
                     fontSize: 15,
                     fontColor: "#000",
-
-                    stepSize: 5,
+                    stepSize: 10,
                   },
                 },
               ],

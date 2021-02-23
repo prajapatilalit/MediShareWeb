@@ -134,36 +134,40 @@ function Graph({ history }) {
       </div>
       <div className="chart_box">
         <div>
-          <Chart
-            className="chart"
-            labels={dateArr}
-            name={"Heart Rate"}
-            dataVal={heart_rate}
-          />
+          <div>
+            <Chart
+              className="chart"
+              labels={dateArr}
+              name={"Heart Rate"}
+              dataVal={heart_rate}
+            />
+          </div>
+          <div>
+            <Chart
+              className="chart"
+              labels={dateArr}
+              name={"Blood Pressure"}
+              dataVal={blood_pressure}
+            />
+          </div>
         </div>
         <div>
-          <Chart
-            className="chart"
-            labels={dateArr}
-            name={"Blood Pressure"}
-            dataVal={blood_pressure}
-          />
-        </div>
-        <div>
-          <Chart
-            className="chart"
-            labels={dateArr}
-            name={"Cholesterol"}
-            dataVal={cholesterol}
-          />
-        </div>
-        <div>
-          <Chart
-            className="chart"
-            labels={dateArr}
-            name={"Blood Bugar"}
-            dataVal={blood_sugar}
-          />
+          <div>
+            <Chart
+              className="chart"
+              labels={dateArr}
+              name={"Cholesterol"}
+              dataVal={cholesterol}
+            />
+          </div>
+          <div>
+            <Chart
+              className="chart"
+              labels={dateArr}
+              name={"Blood Bugar"}
+              dataVal={blood_sugar}
+            />
+          </div>
         </div>
       </div>
     </div>
