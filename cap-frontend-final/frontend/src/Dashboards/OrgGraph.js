@@ -6,7 +6,7 @@ import Chart from "./chart";
 function OrgGraph({ history }) {
   const UID = history.location.state.userinfo.UID;
   console.log(UID);
-  const [graphValues, setGraphValues] = useState();
+  const [graphValues, setGraphValues] = useState([]);
 
   useEffect(() => {
     getPatGraph(UID)

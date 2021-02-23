@@ -7,7 +7,7 @@ function PatientGraph({ history }) {
   console.log(history);
   const UID = history.location.state;
   console.log(UID);
-  const [graphValues, setGraphValues] = useState();
+  const [graphValues, setGraphValues] = useState([]);
 
   useEffect(() => {
     getPatGraph(UID)
