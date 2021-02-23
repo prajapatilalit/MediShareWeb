@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
-const Chart = (data) => {
-  console.log(data);
-  const labels = ["Heart_rate", "Blood_pressure", "Cholestrol", "Blood_sugar"];
-  const dataVal = data.data;
+const Chart = (props) => {
+  // console.log(data);
+  const labels = props.labels;
+  const dataVal = props.dataVal;
   const Chartdata = {
     labels: labels,
     datasets: [
       {
-        label: "Patient health chart",
+        label: props.name,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -38,8 +38,9 @@ const Chart = (data) => {
           backgroundColor: "antiquewhite",
         }}
       >
-        <Bar
+        <Line
           data={Chartdata}
+          type="line"
           options={{
             maintainAspectRatio: false,
             title: {
@@ -69,7 +70,7 @@ const Chart = (data) => {
               ],
             },
           }}
-        ></Bar>
+        ></Line>
       </div>
     </div>
   );
