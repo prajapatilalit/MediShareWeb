@@ -205,6 +205,13 @@ body {
 
 /*prescription_data*/
 
+.prescription_content input {
+  width: "700px";
+  height: "600px";
+  display: flex;
+  flex-direction: column;
+}
+
 .prescription_header {
   text-align: center;
 }

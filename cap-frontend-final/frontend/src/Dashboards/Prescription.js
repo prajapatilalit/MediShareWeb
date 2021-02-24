@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { addPrescription, getPres } from "../CallingApi/patientapi";
+import "./styles.css";
+import Button from "@material-ui/core/Button";
 
 function Prescription({ history }) {
   const histor = history.location.state;
@@ -70,29 +72,41 @@ function Prescription({ history }) {
   console.log("Prescription", { history });
   return (
     <div>
-      <h1>Add Prescription Here</h1>
-      <Link to="/doctor/dashboard">
-        {" "}
-        <button>Go back To Dashboard</button>{" "}
-      </Link>
-      <button
-        onClick={() => {
-          history.push("/doctor/AddingFeatures", history.location.state);
-        }}
-      >
-        Go back Upload Panal
-      </button>
+      <div className="prescription_header">
+        <h1>Add Prescription Here</h1>
+      </div>
+      <div style={{ textAlign: "center", margin: "10px" }}>
+        <Link to="/doctor/dashboard">
+          {" "}
+          <Button variant="contained" color="primary" size="medium">
+            Go back To Dashboard
+          </Button>{" "}
+        </Link>
+        <Button
+          variant="contained"
+          color="primary"
+          size="medium"
+          onClick={() => {
+            history.push("/doctor/AddingFeatures", history.location.state);
+          }}
+        >
+          Go back Upload Panal
+        </Button>
+      </div>
       <div className="App">
         <br></br>
         <h3>
           Check {Patient_name}'s Previos Prescription{" "}
-          <button
+          <Button
+            variant="contained"
+            color="primary"
+            size="medium"
             onClick={() => {
               history.push("/doctor/previousPrescriptions", histor);
             }}
           >
             Check Previous Prescriptions
-          </button>{" "}
+          </Button>{" "}
         </h3>
 
         <h3
@@ -107,60 +121,81 @@ function Prescription({ history }) {
         <br></br>
         {inputList.map((x, i) => {
           return (
-            <div className="box">
-              <input
-                name="med_name"
-                placeholder="Medicine Name"
-                value={x.med_name}
-                onChange={(e) => handleInputChange(e, i)}
-              />
-              <input
-                className="ml10"
-                name="duration"
-                placeholder="duration(In Days)"
-                value={x.duration}
-                onChange={(e) => handleInputChange(e, i)}
-              />
-              <select
-                style={{ marginLeft: 20 }}
-                name="Morning_dosage"
-                id="dosage"
-                onChange={(e) => handleInputChange(e, i)}
-              >
-                <option value="select">Morning Dosage</option>
-                <option value="Morning - 1">1</option>
-                <option value="Morning - 2">2</option>
-                <option value="Morning - 3">3</option>
-              </select>
-              <select
-                style={{ marginLeft: 20 }}
-                name="Evening_dosage"
-                id="dosage"
-                onChange={(e) => handleInputChange(e, i)}
-              >
-                <option value="select">Evening Dosage</option>
-                <option value="Evening - 1">1</option>
-                <option value="Evening - 2">2</option>
-                <option value="Evening - 3">3</option>
-              </select>
-              <div className="btn-box">
-                {inputList.length !== 1 && (
-                  <button className="mr10" onClick={() => handleRemoveClick(i)}>
-                    Remove
-                  </button>
-                )}
-                {inputList.length - 1 === i && (
-                  <button className="ml30" onClick={handleAddClick}>
-                    + Medication
-                  </button>
-                )}
+            <div style={{ padding: "15px", width: "200px", height: "400px" }}>
+              <div className="prescription_content">
+                <input
+                  name="med_name"
+                  placeholder="Medicine Name"
+                  value={x.med_name}
+                  onChange={(e) => handleInputChange(e, i)}
+                />
+                <input
+                  className="ml10"
+                  name="duration"
+                  placeholder="duration(In Days)"
+                  value={x.duration}
+                  onChange={(e) => handleInputChange(e, i)}
+                />
+                <select
+                  style={{ marginLeft: 20 }}
+                  name="Morning_dosage"
+                  id="dosage"
+                  onChange={(e) => handleInputChange(e, i)}
+                >
+                  <option value="select">Morning Dosage</option>
+                  <option value="Morning - 1">1</option>
+                  <option value="Morning - 2">2</option>
+                  <option value="Morning - 3">3</option>
+                </select>
+                <select
+                  style={{ marginLeft: 20 }}
+                  name="Evening_dosage"
+                  id="dosage"
+                  onChange={(e) => handleInputChange(e, i)}
+                >
+                  <option value="select">Evening Dosage</option>
+                  <option value="Evening - 1">1</option>
+                  <option value="Evening - 2">2</option>
+                  <option value="Evening - 3">3</option>
+                </select>
+                <div className="btn-box">
+                  {inputList.length !== 1 && (
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      size="medium"
+                      className="mr10"
+                      onClick={() => handleRemoveClick(i)}
+                    >
+                      Remove
+                    </Button>
+                  )}
+                  {inputList.length - 1 === i && (
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      size="medium"
+                      className="ml30"
+                      onClick={handleAddClick}
+                    >
+                      + Medication
+                    </Button>
+                  )}
+                </div>
               </div>
             </div>
           );
         })}
 
-        <button onClick={onsubmits}>Submit</button>
-        <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
+        <Button
+          variant="contained"
+          color="primary"
+          size="medium"
+          onClick={onsubmits}
+        >
+          Submit
+        </Button>
+        {/* <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div> */}
         {message ? <p style={{ color: "green" }}>{message}</p> : ""}
         {/* {JSON.stringify(finalList)} */}
         <p style={{ color: "green", font: "bold" }}>{result.success}</p>
