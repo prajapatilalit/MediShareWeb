@@ -205,11 +205,22 @@ body {
 
 /*prescription_data*/
 
+.prescription_header {
+  text-align: center;
+}
 .prescription_data ol {
   padding: 20px;
-  margin-left: 25px;
+  margin-left: 30px;
   display: flex;
   flex-wrap: wrap;
+  list-style: none;
+}
+
+.task {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  border-bottom: 5px solid brown;
+  border-right: 5px solid brown;
 }
 
 @media (max-width: 420px) {

@@ -24,9 +24,11 @@ const PreviousPrescriptions = ({ history }) => {
   }, []);
 
   return (
-    <div style={{ padding: "10px" }}>
-      <div style={{ marginTop: "50px", padding: "15px", textAlign: "center" }}>
-        <h1>{patientName}'s Previous Prescriptions</h1>
+    <div style={{ margin: "10px" }}>
+      <div>
+        <div className="prescription_header">
+          <h1>{patientName}'s Previous Prescriptions</h1>
+        </div>
       </div>
       <div style={{ textAlign: "center", margin: "10px" }}>
         <Button
@@ -43,6 +45,7 @@ const PreviousPrescriptions = ({ history }) => {
           Go back to Doctor Upload
         </Button>
       </div>
+
       <div>
         {presData ? (
           <div className="prescription_data">
