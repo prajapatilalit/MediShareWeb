@@ -54,7 +54,7 @@ function PatientGraph({ history }) {
           <button>Patient Dashboard</button>
           {""}
         </Link>
-        {/* {JSON.stringify(graphValues)} */}
+        {/* { {JSON.stringify(graphValues)} } */}
       </div>
 
       <div className="chart_box">
@@ -74,6 +74,7 @@ function PatientGraph({ history }) {
             dataVal={blood_pressure}
           />
         </div>
+        <br />
         <div>
           <Chart
             className="chart"

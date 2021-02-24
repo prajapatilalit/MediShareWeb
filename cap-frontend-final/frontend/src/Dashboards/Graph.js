@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { addGraphValues, getPatGraph } from "../CallingApi/patientapi";
 import Chart from "./chart";
+import "./styles.css";
 
 function Graph({ history }) {
   const doc = JSON.parse(localStorage.getItem("jwt"));
@@ -79,8 +80,8 @@ function Graph({ history }) {
   };
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
-      <div style={{ textAlign: "center" }}>
+    <div>
+      <div>
         <h1>Add Graph here</h1>
         <Link to="/doctor/dashboard">
           {" "}
@@ -131,46 +132,42 @@ function Graph({ history }) {
              {JSON.stringify(values)} */}
         {/* {JSON.stringify(graphValues)} */}
       </div>
-      <div
-        style={{
-          width: "100%",
-          height: "auto",
-          display: "flex",
-          flexWrap: "wrap",
-        }}
-      >
-        <div style={{ width: "600px", height: "auto" }}>
-          <Chart
-            style={{ width: "600px", height: "auto" }}
-            labels={dateArr}
-            name={"Heart Rate"}
-            dataVal={heart_rate}
-          />
+      <div className="chart_box">
+        <div>
+          <div>
+            <Chart
+              className="chart"
+              labels={dateArr}
+              name={"Heart Rate"}
+              dataVal={heart_rate}
+            />
+          </div>
+          <div>
+            <Chart
+              className="chart"
+              labels={dateArr}
+              name={"Blood Pressure"}
+              dataVal={blood_pressure}
+            />
+          </div>
         </div>
-        <div style={{ width: "600px", height: "auto" }}>
-          <Chart
-            style={{ width: "600px", height: "auto" }}
-            labels={dateArr}
-            name={"Blood Pressure"}
-            dataVal={blood_pressure}
-          />
-        </div>
-
-        <div style={{ width: "600px", height: "auto" }}>
-          <Chart
-            style={{ width: "600px", height: "auto" }}
-            labels={dateArr}
-            name={"Cholesterol"}
-            dataVal={cholesterol}
-          />
-        </div>
-        <div style={{ width: "600px", height: "auto" }}>
-          <Chart
-            style={{ width: "600px", height: "auto" }}
-            labels={dateArr}
-            name={"Blood Bugar"}
-            dataVal={blood_sugar}
-          />
+        <div>
+          <div>
+            <Chart
+              className="chart"
+              labels={dateArr}
+              name={"Cholesterol"}
+              dataVal={cholesterol}
+            />
+          </div>
+          <div>
+            <Chart
+              className="chart"
+              labels={dateArr}
+              name={"Blood Bugar"}
+              dataVal={blood_sugar}
+            />
+          </div>
         </div>
       </div>
     </div>

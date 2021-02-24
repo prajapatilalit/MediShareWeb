@@ -9,15 +9,15 @@ function Prescription({ history }) {
   const [result, setResult] = useState({ success: "", error: "" });
   const [message, setMessage] = useState("");
 
-  useEffect(async () => {
-    await getPres(history.location.state.userinfo.UID)
+  useEffect(() => {
+    getPres(history.location.state.userinfo.UID)
       .then((res) => {
         console.log("USEEFFTCT", res);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [history.location.state.userinfo.UID]);
 
   // useEffect(() => {
   //    console.log("UID",history.location.state.userinfo.UID);
@@ -162,7 +162,7 @@ function Prescription({ history }) {
         <button onClick={onsubmits}>Submit</button>
         <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
         {message ? <p style={{ color: "green" }}>{message}</p> : ""}
-        {JSON.stringify(finalList)}
+        {/* {JSON.stringify(finalList)} */}
         <p style={{ color: "green", font: "bold" }}>{result.success}</p>
       </div>
       {/* <h1> {result.success ? <p>  {result.success}</p> : ""  }  </h1> */}

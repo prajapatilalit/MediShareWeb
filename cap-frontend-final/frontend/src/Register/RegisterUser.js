@@ -1,24 +1,24 @@
-import React, { useState } from "react";
-import "./styles.css";
+import React, { useState } from 'react'
+import './styles.css'
 //import Home from '../home'
-import { Link } from "react-router-dom";
-import { signup } from "../CallingApi/patientapi";
-import Navbar from "../Landing Page/Navbar";
-import Footer from "../Landing Page/Footer";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import { Link } from 'react-router-dom'
+import { signup } from '../CallingApi/patientapi'
+import Navbar from '../Landing Page/Navbar'
+//import Footer from '../Landing Page/Footer'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
 const RegisterUser = (props) => {
-  console.log(props);
+  console.log(props)
 
   const [values, SetValues] = useState({
-    name: "",
-    email: "",
-    password: "",
-    passwordCheck: "",
-    phone_no: "",
-    error: "",
-    message: "",
-  });
+    name: '',
+    email: '',
+    password: '',
+    passwordCheck: '',
+    phone_no: '',
+    error: '',
+    message: '',
+  })
 
   const {
     name,
@@ -28,19 +28,19 @@ const RegisterUser = (props) => {
     phone_no,
     error,
     message,
-  } = values;
+  } = values
 
-  const patient_name = name;
-  const patient_email = email;
-  const patient_phone_no = phone_no;
+  const patient_name = name
+  const patient_email = email
+  const patient_phone_no = phone_no
 
   const handleChange = (e) => {
-    const store = e.target.name;
-    SetValues({ ...values, [store]: e.target.value });
-  };
+    const store = e.target.name
+    SetValues({ ...values, [store]: e.target.value })
+  }
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     signup(
       {
         patient_name,
@@ -53,102 +53,101 @@ const RegisterUser = (props) => {
     )
       .then((data) => {
         if (data.msg) {
-          SetValues({ ...values, error: data.msg, message: "" });
+          SetValues({ ...values, error: data.msg, message: '' })
         } else {
-          SetValues({ ...values, error: "", message: data.message });
+          SetValues({ ...values, error: '', message: data.message })
         }
       })
-      .catch((err) => console.log(err.message));
-  };
+      .catch((err) => console.log(err.message))
+  }
 
   return (
     <div>
       <Navbar />
-      <div className="wrapper">
-        <div className="back">
-          <Link to="/Register">
-            {" "}
-            <div className="inputfield back-button">
+      <div className='wrapper'>
+        <div className='back'>
+          <Link to='/Register'>
+            {' '}
+            <div className='inputfield back-button'>
               <p>{<ArrowBackIcon />}</p>
               <p>Back to Register Dashboard</p>
-            </div>{" "}
+            </div>{' '}
           </Link>
         </div>
-        <div className="title">
+        <div className='title'>
           <div>Patient Registration</div>
         </div>
 
-        <div className="form">
-          <div className="inputfield">
+        <div className='form'>
+          <div className='inputfield'>
             <label>Name</label>
             <input
               required
-              type="text"
-              name="name"
+              type='text'
+              name='name'
               onChange={handleChange}
               value={name}
-              className="input"
+              className='input'
             />
           </div>
-          <div className="inputfield">
+          <div className='inputfield'>
             <label>Email</label>
             <input
               required
-              type="email"
-              name="email"
+              type='email'
+              name='email'
               onChange={handleChange}
               value={email}
-              className="input"
+              className='input'
             />
           </div>
-          <div className="inputfield">
+          <div className='inputfield'>
             <label>Password</label>
             <input
               required
-              type="password"
-              name="password"
+              type='password'
+              name='password'
               onChange={handleChange}
               value={password}
-              className="input"
+              className='input'
             />
           </div>
-          <div className="inputfield">
+          <div className='inputfield'>
             <label>Re-Enter Password</label>
             <input
               required
-              type="password"
-              name="passwordCheck"
-              className="input"
+              type='password'
+              name='passwordCheck'
+              className='input'
               onChange={handleChange}
               value={passwordCheck}
             />
           </div>
-          <div className="inputfield">
+          <div className='inputfield'>
             <label>Phone Number</label>
             <input
               required
-              name="phone_no"
-              className="input"
+              name='phone_no'
+              className='input'
               onChange={handleChange}
               value={phone_no}
             />
           </div>
-          {error ? <p className="error_message">{error}</p> : ""}
-          {message ? <p className="message">{message}</p> : ""}
-          <div className="inputfield">
-            <button onClick={onSubmit} className="btn">
+          {error ? <p className='error_message'>{error}</p> : ''}
+          {message ? <p className='message'>{message}</p> : ''}
+          <div className='inputfield'>
+            <button onClick={onSubmit} className='btn'>
               Submit
             </button>
           </div>
 
-          <Link to="/users/login" className="inputfield">
+          <Link to='/users/login' className='inputfield'>
             <p>Already Registered? Login</p>
           </Link>
         </div>
       </div>
-      <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default RegisterUser;
+export default RegisterUser

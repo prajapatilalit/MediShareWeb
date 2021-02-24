@@ -5,6 +5,7 @@ import {
   getPatDetails,
   updatePatDetails,
 } from "../CallingApi/patientapi";
+// import PatientPanel from "../Panel/PatientPanels/PatientPanel";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import { Button } from "../Landing Page/Button";
@@ -532,8 +533,10 @@ const PatientDashboard = ({ props, history }) => {
     };
   }, []);
   //
+
   return (
     <div>
+      {/* <PatientPanel /> */}
       <IconContext.Provider value={{ color: "#fff" }}>
         <nav className="navbar">
           <div className="navbar-container container">

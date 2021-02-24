@@ -1,0 +1,62 @@
+h1 {
+  color: white;
+}
+.wrap {
+  width: 400px;
+  margin: 5px;
+}
+
+.task {
+  overflow: hidden;
+  cursor: pointer;
+  perspective: 800px;
+  transform-style: preserve-3d;
+}
+
+.abstract,
+.details {
+  width: 100%;
+  padding: 15px 30px;
+  position: relative;
+  background: white;
+}
+.task:hover .abstract,
+.task:hover .details {
+  background: #fafafa;
+}
+
+.abstract {
+  transition: 0.3s ease all;
+}
+
+.details {
+  max-height: 0;
+  padding: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transform: rotateX(-180deg);
+  transform-origin: top center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: 0.3s transform ease;
+}
+.details:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: grey;
+}
+.task:hover .details {
+  max-height: none;
+  overflow: visible;
+  visibility: visible;
+  transform: rotateX(0deg);
+}
+
+.details__inner {
+  padding: 15px 30px;
+}
