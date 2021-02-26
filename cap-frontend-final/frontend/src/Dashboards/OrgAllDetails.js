@@ -4,12 +4,12 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
-// import { Button } from "../Landing Page/Button";
-import Button from "@material-ui/core/Button";
+import { Button } from "../Landing Page/Button";
+// import Button from "@material-ui/core/Button";
 import { signout } from "../CallingApi/patientapi";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+// import Paper from "@material-ui/core/Paper";
+// import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -168,7 +168,53 @@ function OrgAllDetails({ history }) {
           </div>
         </nav>
       </IconContext.Provider>
-      <div className={classes.root}>
+      <div className="wrapper">
+        <div className="form">
+          <div className="inputfield">
+            <p>
+              {" "}
+              Name : <b>{patient_name}</b>
+            </p>
+          </div>
+          <div className="inputfield">
+            <p>
+              {" "}
+              Age : <b>{age}</b>
+            </p>
+          </div>
+          <div className="inputfield">
+            <p>
+              Gender : <b>{gender}</b>
+            </p>
+          </div>
+          <div className="inputfield">
+            <p>
+              Allergies : <b>{allergies}</b>
+            </p>
+          </div>
+          <div className="inputfield">
+            <p>
+              Bloodgroup : <b>{bloodgroup}</b>
+            </p>
+          </div>
+          <div className="inputfield">
+            <p>
+              Medication : <b>{medication}</b>
+            </p>
+          </div>
+          <div className="inputfield">
+            <p>
+              Occured Condition : <b>{occur_cond}</b>
+            </p>
+          </div>
+          <div className="inputfield">
+            <p>
+              Emergency Number : <b>{emergency_no}</b>
+            </p>
+          </div>
+        </div>
+      </div>
+      {/* <div className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
@@ -287,7 +333,7 @@ function OrgAllDetails({ history }) {
             </Paper>
           </Grid>
         </Grid>
-      </div>
+      </div> */}
     </>
   );
 }

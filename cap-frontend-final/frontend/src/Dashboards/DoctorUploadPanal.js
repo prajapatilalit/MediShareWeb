@@ -2,25 +2,25 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
-// import { Button } from "../Landing Page/Button";
-import Button from "@material-ui/core/Button";
+import { Button } from "../Landing Page/Button";
+// import Button from "@material-ui/core/Button";
 import { signout } from "../CallingApi/patientapi";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+// import { makeStyles } from "@material-ui/core/styles";
+// import Paper from "@material-ui/core/Paper";
+// import Grid from "@material-ui/core/Grid";
 import "../Landing Page/Navbar.css";
 import "./styles.css";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.primary,
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     flexGrow: 1,
+//   },
+//   paper: {
+//     padding: theme.spacing(2),
+//     textAlign: "center",
+//     color: theme.palette.text.primary,
+//   },
+// }));
 
 // age: 26
 // allergies: "latex and dust mites allergies"
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 // occur_cond: "Rheumatoid Arthritis"
 
 function DoctorUploadPanal({ history }) {
-  const classes = useStyles();
+  // const classes = useStyles();
   console.log(history);
 
   const {
@@ -180,7 +180,53 @@ function DoctorUploadPanal({ history }) {
           </div>
         </nav>
       </IconContext.Provider>
-      <div className={classes.root}>
+      <div className="wrapper">
+        <div className="form">
+          <div className="inputfield">
+            <p>
+              {" "}
+              Name : <b>{patient_name}</b>
+            </p>
+          </div>
+          <div className="inputfield">
+            <p>
+              {" "}
+              Age : <b>{age}</b>
+            </p>
+          </div>
+          <div className="inputfield">
+            <p>
+              Gender : <b>{gender}</b>
+            </p>
+          </div>
+          <div className="inputfield">
+            <p>
+              Allergies : <b>{allergies}</b>
+            </p>
+          </div>
+          <div className="inputfield">
+            <p>
+              Bloodgroup : <b>{bloodgroup}</b>
+            </p>
+          </div>
+          <div className="inputfield">
+            <p>
+              Medication : <b>{medication}</b>
+            </p>
+          </div>
+          <div className="inputfield">
+            <p>
+              Occured Condition : <b>{occur_cond}</b>
+            </p>
+          </div>
+          <div className="inputfield">
+            <p>
+              Emergency Number : <b>{emergency_no}</b>
+            </p>
+          </div>
+        </div>
+      </div>
+      {/* <div className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
@@ -299,7 +345,7 @@ function DoctorUploadPanal({ history }) {
             </Paper>
           </Grid>
         </Grid>
-      </div>
+      </div> */}
     </div>
   );
 }

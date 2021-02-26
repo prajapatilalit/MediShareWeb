@@ -18,9 +18,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
     textAlign: "center",
-    color: theme.palette.text.secondary,
+    color: "#f6f5f5",
   },
 }));
 
@@ -221,13 +221,13 @@ function Graph({ history }) {
         </nav>
       </IconContext.Provider>
       <div className={classes.root}>
-        <Grid container spacing={1}>
-          <Grid item xs={12}>
+        <Grid container>
+          {/* <Grid item xs={12}>
             <Paper className={classes.paper}>
               <h1 className="prescription_heading">Add Graph here</h1>
             </Paper>
-          </Grid>
-          <Grid item xs={12} sm={6} alignContent={"center"}>
+          </Grid> */}
+          {/* <Grid item xs={12} sm={6} alignContent={"center"}>
             <Paper
               style={{ height: "100%", alignItems: "center" }}
               className={classes.paper}
@@ -258,36 +258,36 @@ function Graph({ history }) {
                 </div>
               </div>
             </Paper>
-          </Grid>
-          <Grid item xs={12} sm={6}>
+          </Grid> */}
+          <Grid item xs={12}>
             <Paper className={classes.paper}>
               <div className="form_field">
                 <input
                   placeholder="Heart_rate"
                   name="Heart_rate"
-                  // onChange={onChange}
-                  // value={Heart_rate}
+                  onChange={onChange}
+                  value={Heart_rate}
                 ></input>
                 <br></br>
                 <input
                   placeholder="Blood_pressure"
                   name="Blood_pressure"
-                  // onChange={onChange}
-                  // value={Blood_pressure}
+                  onChange={onChange}
+                  value={Blood_pressure}
                 ></input>
                 <br></br>
                 <input
                   placeholder="Cholesterol"
                   name="Cholesterol"
-                  // onChange={onChange}
-                  // value={Cholesterol}
+                  onChange={onChange}
+                  value={Cholesterol}
                 ></input>
                 <br></br>
                 <input
                   placeholder="Blood_sugar"
                   name="Blood_sugar"
-                  // onChange={onChange}
-                  // value={Blood_sugar}
+                  onChange={onChange}
+                  value={Blood_sugar}
                 ></input>
                 <br></br>
                 <br></br>
@@ -300,9 +300,11 @@ function Graph({ history }) {
                 >
                   Submit{" "}
                 </Button> */}
-                <Button buttonStyle="btn--outline1">Submit</Button>
+                <Button onClick={onClicks} buttonStyle="btn--outline1">
+                  Submit
+                </Button>
 
-                {/* {result ? <p style={{ color: "green" }}>{result}</p> : ""} */}
+                {result ? <p style={{ color: "green" }}>{result}</p> : ""}
               </div>
             </Paper>
           </Grid>

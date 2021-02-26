@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { getPres } from "../CallingApi/patientapi";
 import Button from "@material-ui/core/Button";
 import "./styles.css";
@@ -30,7 +30,7 @@ function OrgPrescription({ history }) {
       <div style={{ textAlign: "center", margin: "10px" }}>
         <Button
           variant="contained"
-          color="primary"
+          color="secondary"
           size="large"
           onClick={() => {
             history.push("/org/dashboard");
@@ -41,7 +41,7 @@ function OrgPrescription({ history }) {
         <Button
           style={{ marginLeft: "20px" }}
           variant="contained"
-          color="primary"
+          color="secondary"
           size="large"
           onClick={() => {
             history.push("/org/allDetails", history.location.state);
