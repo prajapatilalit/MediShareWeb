@@ -33,9 +33,9 @@ body {
 .wrapper {
   max-width: 600px;
   width: 100%;
-  background: #fff;
+  background: #f4f9f9;
   margin: 100px auto;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.125);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   padding: 30px;
   border-radius: 5px;
 }
@@ -223,6 +223,37 @@ body {
   list-style: none;
 }
 
+.prescription_heading {
+  color: #161d6f;
+  text-transform: capitalize;
+  font-size: 40px;
+  font-family: cursive;
+}
+.form_field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  padding: 10px;
+}
+.form_field input {
+  width: 400px;
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+.form_field select {
+  width: 400px;
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
+  margin-left: 0px !important;
+}
+.btn-box {
+  margin-right: 5px;
+}
 .task {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;

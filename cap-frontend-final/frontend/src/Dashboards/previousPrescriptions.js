@@ -34,7 +34,7 @@ const PreviousPrescriptions = ({ history }) => {
         <Button
           variant="contained"
           color="primary"
-          size="medium"
+          size="large"
           onClick={() => {
             history.push(
               "/doctor/AddingFeatures/prescription",
