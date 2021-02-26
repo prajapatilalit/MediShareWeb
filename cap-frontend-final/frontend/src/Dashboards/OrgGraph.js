@@ -17,9 +17,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
     textAlign: "center",
-    color: theme.palette.text.secondary,
+    color: "#f6f5f5",
   },
 }));
 
@@ -185,22 +185,14 @@ function OrgGraph({ history }) {
           </div>
         </nav>
       </IconContext.Provider>
-      <div style={{ textAlign: "center", margin: "10px" }}>
+      {/* <div style={{ textAlign: "center", margin: "10px" }}>
         <div className="prescription_header">
           <h1>Organisation Graph Dashboard</h1>
         </div>
-      </div>
+      </div> */}
 
       <div className={classes.root}>
-        <Grid container spacing={1}>
-          <Grid item xs={12}>
-            <Paper className={classes.paper}>
-              <h1 className="prescription_heading">
-                Organisation Graph Pannel
-              </h1>
-            </Paper>
-          </Grid>
-
+        <Grid container>
           <Grid item xs={12} sm={6}>
             <Paper className={classes.paper}>
               <div>
