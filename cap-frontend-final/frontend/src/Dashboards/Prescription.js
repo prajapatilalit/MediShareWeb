@@ -246,7 +246,7 @@ function Prescription({ history }) {
                   fontFamily: "cursive",
                 }}
               >
-                Check lalit's Previos Prescription
+                Check Previous Prescription
               </h3>
               <Button
                 variant="contained"
